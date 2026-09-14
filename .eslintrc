@@ -23,7 +23,7 @@
   },
   overrides: [
     {
-      files: ["next.config.js", "playwright.config.ts"],
+      files: ["next.config.js", "playwright.config.ts", "scripts/*.mjs"],
       env: { node: true },
     },
   ],

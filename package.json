@@ -5,13 +5,13 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,json,yml}\"",
-    "lint": "tsc --noEmit && eslint --max-warnings=0 --cache --ext .js,.ts,.tsx .",
-    "lint-fix": "eslint --fix --cache --ext .js,.ts,.tsx .",
+    "format": "prettier --write \"**/*.{js,mjs,jsx,ts,tsx,css,scss,json,yml}\"",
+    "lint": "tsc --noEmit && eslint --max-warnings=0 --cache --ext .js,.mjs,.ts,.tsx .",
+    "lint-fix": "eslint --fix --cache --ext .js,.mjs,.ts,.tsx .",
     "start": "serve out",
     "test": "playwright test",
     "pages:build": "NEXT_PUBLIC_BASE_PATH=/wikitrivia-v1 bun run build",
-    "pages:deploy": "bun run pages:build && gh-pages -d out --nojekyll"
+    "pages:deploy": "bun run pages:build && node scripts/publish-pages.mjs"
   },
   "dependencies": {
     "axios": "^1.6.7",

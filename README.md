@@ -41,17 +41,37 @@ The build writes the static website to `out/`. The preview server prints its loc
 
 ## Host on GitHub Pages
 
-1. Open this repository's **Settings → Pages**.
-2. Under **Build and deployment**, select **GitHub Actions** as the source.
-3. Open **Actions → Deploy GitHub Pages → Run workflow**.
-4. Select the `main` branch and run the workflow.
-5. Open the website URL shown by the deployment after it finishes.
+Live site: <https://aidencb.github.io/wikitrivia-v1/>.
 
-For this repository, the default URL is <https://aidencb.github.io/wikitrivia-v1/>. It becomes available after the first successful deployment. The workflow runs manually, so repeat step 3 when you want to publish new changes.
+This repository publishes the built website from the `gh-pages` branch. The
+source code stays on `main`. This setup uses normal repository push access and
+does not require a custom Actions workflow or an extra `workflow` permission.
 
-The workflow gets the site's path from GitHub Pages and uploads only `out/`. Source files, tests, dependencies, and local recordings are not included in the website artifact. If you set up a custom domain in **Settings → Pages**, run the workflow again to rebuild for that address.
+To publish an update from your local checkout:
 
-Public repositories can use Pages on GitHub Free. The website is public. See [GitHub's Pages setup documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+```bash
+bun install --frozen-lockfile
+bun run lint
+bun run pages:deploy
+```
+
+`pages:deploy` builds the site for `/wikitrivia-v1/`, then publishes only the
+contents of `out/` to `gh-pages`. It adds `.nojekyll` so GitHub serves Next.js's
+`_next/` assets correctly. Dependencies, tests, source files, and recordings stay
+out of the published branch. GitHub Pages updates the live site after the push.
+
+If you need to configure Pages again:
+
+1. Open **Settings → Pages** in this repository.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select **gh-pages** and **/ (root)**, then click **Save**.
+
+The local build path matches this repository's name. If you rename the repository
+or move it to a custom domain, update `pages:build` in `package.json` to use the
+new path, or an empty path for a domain root, before publishing again.
+
+Public repositories can use Pages on GitHub Free. The website is public. See
+[GitHub's branch publishing documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
 ## Check changes
 

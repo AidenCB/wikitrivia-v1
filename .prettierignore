@@ -1,7 +1,0 @@
-# Build files
-.next
-out
-test-results
-playwright-report
-# The saved deck is newline-delimited JSON.
-public/items.json

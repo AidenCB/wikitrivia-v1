@@ -16,7 +16,9 @@ export default function Game() {
 
   React.useEffect(() => {
     const fetchGameData = async () => {
-      const res = await axios.get<string>("/items.json");
+      const res = await axios.get<string>(
+        `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/items.json`
+      );
       const items: Item[] = res.data
         .trim()
         .split("\n")

@@ -22,9 +22,9 @@ export default function Board(props: Props) {
 
   const [isDragging, setIsDragging] = React.useState(false);
 
-  async function onDragStart() {
+  function onDragStart() {
     setIsDragging(true);
-    navigator.vibrate(20);
+    navigator.vibrate?.(20);
   }
 
   async function onDragEnd(result: DropResult) {
@@ -128,10 +128,9 @@ export default function Board(props: Props) {
       <div className={styles.wrapper}>
         <div className={styles.top}>
           <Hearts lives={state.lives} />
-          {state.lives > 0 ? (
-            <>
-              <NextItemList next={state.next} />
-            </>
+          {/* Finish the correction before removing its source drop target. */}
+          {state.lives > 0 || state.badlyPlaced !== null ? (
+            <NextItemList next={state.lives > 0 ? state.next : null} />
           ) : (
             <GameOver
               highscore={highscore}

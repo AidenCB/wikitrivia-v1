@@ -24,6 +24,13 @@ export default function Instructions(props: Props) {
         <Button onClick={start} text="Start game" />
         <div className={styles.about}>
           <div>
+            An independent fork of{" "}
+            <a href="https://github.com/tom-james-watson/wikitrivia">
+              Wikitrivia
+            </a>{" "}
+            by Tom Watson.
+          </div>
+          <div>
             All data sourced from{" "}
             <a
               href="https://www.wikidata.org"
@@ -45,7 +52,7 @@ export default function Instructions(props: Props) {
           <div>
             Have feedback? Please report it on{" "}
             <a
-              href="https://github.com/tom-james-watson/wikitrivia/issues/"
+              href="https://github.com/AidenCB/wikitrivia-v1/issues/"
               target="_blank"
               rel="noopener noreferrer"
             >

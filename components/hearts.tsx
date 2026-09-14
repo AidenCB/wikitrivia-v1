@@ -22,7 +22,8 @@ function Heart(props: HeartProps) {
     <animated.img
       className={styles.heart}
       style={{ opacity, scale }}
-      src="/images/heart.svg"
+      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/images/heart.svg`}
+      alt={have ? "Remaining life" : "Lost life"}
     />
   );
 }

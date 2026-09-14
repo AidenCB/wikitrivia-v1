@@ -56,11 +56,11 @@ export default function ItemCard(props: Props) {
       return item.description.replace(/ \(.+\)/g, "");
     }
 
-    if (item.instance_of.includes("human") && item.occupations !== null) {
+    if (item.instance_of.includes("human") && item.occupations?.length) {
       return item.occupations[0];
     }
 
-    return item.instance_of[0];
+    return item.instance_of[0] ?? "";
   }, [item]);
 
   return (

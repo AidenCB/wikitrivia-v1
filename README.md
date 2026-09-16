@@ -15,6 +15,7 @@ Drag cards onto the timeline in chronological order. Three wrong placements end 
 - Fixed cards such as Punic Wars crashing when category metadata is missing.
 - Added support for GitHub Pages project URLs, including deck and heart image paths.
 - Share links point to the hosted fork.
+- Added 1,219 dated cards and allowed the normal card selection to include years after 2020.
 - Added browser tests for completing games, restarting, flipping cards, and playing again.
 
 For related projects and earlier forks, see [the comparison notes](docs/related-forks.md).
@@ -87,7 +88,9 @@ bun run build
 
 ## Card data
 
-`public/items.json` is V1's saved deck, with one JSON object per line. It is a historical snapshot and does not refresh from Wikidata automatically. The app excludes entries listed in `lib/bad-cards.ts` and filters obvious date clues.
+`public/items.json` contains 11,213 cards, with one JSON object per line: the original 9,994 V1 cards plus 1,219 additions from a saved Wikitrivia Classic snapshot. Additions include discoveries, software, museums, buildings, entertainment, and historical events. The app excludes entries listed in `lib/bad-cards.ts` and filters obvious date clues. It does not refresh from Wikidata automatically.
+
+See [dataset sources and rebuilding instructions](docs/card-data.md) for the pinned source, selection rules, and limitations.
 
 Facts come from [Wikidata](https://www.wikidata.org), articles from [Wikipedia](https://www.wikipedia.org), and card images load from Wikimedia Commons. Individual images retain their own licenses. The original data collection project is [wikitrivia-scraper](https://github.com/tom-james-watson/wikitrivia-scraper).
 

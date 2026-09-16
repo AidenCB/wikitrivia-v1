@@ -5,7 +5,7 @@ export function getRandomItem(deck: Item[], played: Item[]): Item {
   const periods: [number, number][] = [
     [-100000, 1000],
     [1000, 1800],
-    [1800, 2020],
+    [1800, new Date().getFullYear()],
   ];
   const [fromYear, toYear] =
     periods[Math.floor(Math.random() * periods.length)];
@@ -30,9 +30,8 @@ export function getRandomItem(deck: Item[], played: Item[]): Item {
 }
 
 function tooClose(item: Item, played: Item[]) {
-  let distance = (played.length < 40) ? 5 : 1;
-  if (played.length < 11)
-    distance = 110 - 10 * played.length;
+  let distance = played.length < 40 ? 5 : 1;
+  if (played.length < 11) distance = 110 - 10 * played.length;
 
   return played.some((p) => Math.abs(item.year - p.year) < distance);
 }
